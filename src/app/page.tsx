@@ -1,66 +1,48 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
+import HomeHero from "@/components/home/hero-section";
+import ClientMarquee from "@/components/home/client-marquee";
+import AboutSection from "@/components/home/about-section";
+import ServiceShowcase from "@/components/home/service-showcase";
+import TeamSection from "@/components/home/team-section";
+import FAQSection from "@/components/home/faq-section"; // Import komponen FAQ
+import ScrollReveal from "@/components/ui/scroll-reveal";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="w-full bg-black min-h-screen relative overflow-hidden">
+      
+      {/* SECTION 1: HERO SECTION */}
+      <ScrollReveal duration={1000}>
+        <HomeHero />
+      </ScrollReveal>
+      
+      {/* SECTION 2: CLIENT MARQUEE (Social Proof) */}
+      <ScrollReveal duration={1200}>
+        <ClientMarquee />
+      </ScrollReveal>
+
+      {/* SECTION 3: ABOUT / WHY US */}
+      <ScrollReveal duration={1400}>
+        <AboutSection />
+      </ScrollReveal>
+
+      {/* SECTION 4: SERVICE SHOWCASE */}
+      <ScrollReveal duration={1600}>
+        <ServiceShowcase />
+      </ScrollReveal>
+
+      {/* SECTION 5: TEAM SECTION */}
+      <ScrollReveal duration={1800}>
+        <TeamSection />
+      </ScrollReveal>
+
+      {/* SECTION 6: FAQ SECTION */}
+      <ScrollReveal duration={2000}>
+        <FAQSection />
+      </ScrollReveal>
+      
+      {/* Section modular berikutnya bisa kita susun di bawah sini */}
+      
+    </main>
   );
 }
