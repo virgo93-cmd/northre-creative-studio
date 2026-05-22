@@ -42,7 +42,8 @@ export default function TentangKamiPage() {
       <div className="absolute top-[-10%] right-[-10%] w-125 h-125 rounded-full bg-linear-to-bl from-violet-600/10 to-cyan-500/5 blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-[-10%] left-[-10%] w-125 h-125 rounded-full bg-linear-to-tr from-cyan-600/10 to-violet-500/5 blur-[130px] pointer-events-none z-0" />
 
-      <ScrollReveal duration={1000} className="max-w-360 w-full mx-auto px-6 md:px-16 relative z-10 space-y-20 lg:space-y-24">
+      {/* REVISI UKURAN: Diubah dari max-w-360 menjadi max-w-7xl mx-auto agar responsif */}
+      <ScrollReveal duration={1000} className="max-w-7xl w-full mx-auto px-6 md:px-16 relative z-10 space-y-20 lg:space-y-24">
         
         {/* ================= SECTION 1: HERO HEADER INTRO ================= */}
         <div className="max-w-4xl text-left space-y-4">

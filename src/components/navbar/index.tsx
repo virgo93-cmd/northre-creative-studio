@@ -11,6 +11,12 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProdukHovered, setIsProdukHovered] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // Tambahan state khusus untuk toggle buka/tutup list sub-menu Produk di mobile
+  const [isMobileProdukOpen, setIsMobileProdukOpen] = useState(false);
+
+  // Mengambil data sub-menu produk dari konfigurasi secara aman
+  const produkNav = navigationContent.find((nav) => nav.label === "Produk");
+  const megaMenuCategories = produkNav?.megaMenuCategories || [];
 
   // Mengolah nomor WhatsApp bisnis dari siteConfig agar berformat internasional (62)
   let whatsappUrl = "#";
@@ -135,19 +141,75 @@ export default function Navbar() {
               <p className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-4">Menu Utama</p>
               
               <div className="flex flex-col gap-5">
-                {navigationContent.map((menu, index) => (
-                  <Link 
-                    key={index}
-                    href={menu.href} 
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-xl font-medium text-white hover:text-neutral-400 transition-colors flex items-center justify-between border-b border-neutral-900/40 pb-3"
-                  >
-                    {menu.label}
-                    <svg className="w-4 h-4 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7-7" />
-                    </svg>
-                  </Link>
-                ))}
+                {navigationContent.map((menu, index) => {
+                  // Jika menu memiliki mega menu ("Produk"), render sebagai dropdown accordion yang interaktif
+                  if (menu.hasMegaMenu) {
+                    return (
+                      <div key={index} className="w-full border-b border-neutral-900/40 pb-3">
+                        <button
+                          type="button"
+                          onClick={() => setIsMobileProdukOpen(!isMobileProdukOpen)}
+                          className="w-full text-xl font-medium text-white hover:text-neutral-400 transition-colors flex items-center justify-between text-left cursor-pointer focus:outline-hidden"
+                        >
+                          {menu.label}
+                          <svg 
+                            className={`w-4 h-4 text-neutral-600 transition-transform duration-300 ${isMobileProdukOpen ? "rotate-180" : ""}`} 
+                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </button>
+
+                        {/* Wadah list item sub-menu dari kategori produk */}
+                        <div
+                          className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                            isMobileProdukOpen 
+                              ? "max-h-250 mt-4 opacity-100" 
+                              : "max-h-0 opacity-0 pointer-events-none"
+                          }`}
+                        >
+                          <div className="pl-4 flex flex-col gap-5 border-l border-neutral-900 mt-2">
+                            {megaMenuCategories.map((category, catIndex) => (
+                              <div key={catIndex} className="space-y-2.5">
+                                <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">
+                                  {category.categoryTitle}
+                                </p>
+                                <div className="flex flex-col gap-3">
+                                  {category.items.map((item, itemIndex) => (
+                                    <Link
+                                      key={itemIndex}
+                                      href={item.href}
+                                      onClick={() => setIsMobileMenuOpen(false)} // Menutup sidebar ketika link halaman tujuan diklik
+                                      className="text-sm font-medium text-neutral-400 hover:text-white transition-colors flex items-center gap-2"
+                                    >
+                                      <span className="text-neutral-700">→</span>
+                                      {item.title}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  // Menu reguler lainnya tetap aman menggunakan tag Link asli bawaan lo
+                  return (
+                    <Link 
+                      key={index}
+                      href={menu.href} 
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-xl font-medium text-white hover:text-neutral-400 transition-colors flex items-center justify-between border-b border-neutral-900/40 pb-3"
+                    >
+                      {menu.label}
+                      <svg className="w-4 h-4 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7-7" />
+                      </svg>
+                    </Link>
+                  );
+                })}
               </div>
             </div>
           </div>

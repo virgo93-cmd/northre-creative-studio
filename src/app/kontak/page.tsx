@@ -47,9 +47,9 @@ export default function KontakPage() {
       <div className="absolute top-[-10%] left-[-10%] w-120 h-120 rounded-full bg-linear-to-br from-violet-600/10 to-cyan-500/5 blur-[120px] pointer-events-none z-0" />
       <div className="absolute bottom-[-10%] right-[-10%] w-130 h-130 rounded-full bg-linear-to-tl from-cyan-600/10 to-violet-500/5 blur-[130px] pointer-events-none z-0" />
 
-      {/* KONTAINER UTAMA DENGAN EFEK SMOOTH REVEAL */}
-      <ScrollReveal duration={1000} className="max-w-360 w-full mx-auto px-6 md:px-16 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      {/* REVISI UKURAN: Diubah dari max-w-360 menjadi max-w-7xl mx-auto agar responsif & seimbang di laptop/PC */}
+      <ScrollReveal duration={1000} className="max-w-7xl w-full mx-auto px-6 md:px-12 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* KOLOM KIRI: CREATIVE TOUCHPOINTS & REVISED ACCURATE MAP */}
           <div className="lg:col-span-5 space-y-8 text-left">
@@ -60,7 +60,7 @@ export default function KontakPage() {
                   {contactContent.subtitle}
                 </p>
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight uppercase">
+              <h1 className="text-3xl md:text-4xl font-black tracking-tight text-white leading-tight uppercase">
                 {contactContent.title}
               </h1>
               <p className="text-sm md:text-base text-neutral-400 leading-relaxed font-medium pt-2">
@@ -90,7 +90,7 @@ export default function KontakPage() {
               ))}
             </div>
 
-            {/* SEKSI EMBED MAPS: TITIK KOORDINAT PAS DAN PRESISI */}
+            {/* SEKSI EMBED MAPS */}
             <div className="pt-4 w-full h-64 relative">
               <iframe
                 title="NORTHRE Creative Studio Official Location"

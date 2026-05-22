@@ -15,24 +15,30 @@ export default function HomeHero() {
     return () => clearInterval(timer);
   }, [typewriterItems.length]);
 
+  // Trik duplikasi data yang aman untuk kalkulasi pergeseran Framer Motion -33.33%
+  const marqueeItems = [...[1, 2, 3, 4], ...[1, 2, 3, 4], ...[1, 2, 3, 4]];
+
   return (
     <section className="relative w-full bg-black pt-32 pb-10 overflow-hidden">
+      {/* BACKGROUND DECORATIVE AURA - SEKARANG PAKAI SHORTHAND KANONIKAL w-100 & h-100 */}
       <div className="absolute top-[-10%] right-[-5%] w-100 h-100 rounded-full bg-linear-to-tr from-violet-600/10 to-cyan-500/5 blur-[100px] pointer-events-none z-0" />
 
-      <div className="max-w-350 w-full mx-auto px-6 flex flex-col items-center text-center relative z-10 gap-16">
+      {/* REVISI 1: Mengunci batas maksimal ke max-w-7xl agar sinkron dengan halaman lainnya */}
+      <div className="max-w-7xl w-full mx-auto px-6 flex flex-col items-center text-center relative z-10 gap-16">
         
         {/* JUDUL CENTERED DENGAN LABEL */}
         <div className="w-full space-y-4 flex flex-col items-center">
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-500">Northre Creative Studio</span>
           
-          <div className="h-20 flex items-center justify-center">
+          {/* REVISI 2: Responsif Font Size (text-2xl di HP, text-3xl di tablet, text-5xl di PC/Laptop) */}
+          <div className="h-24 md:h-20 flex items-center justify-center max-w-4xl">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={typewriterItems[index]}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="text-3xl md:text-5xl font-bold uppercase tracking-tight"
+                className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight"
               >
                 <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-white to-violet-500">
                   {typewriterItems[index]}
@@ -61,29 +67,31 @@ export default function HomeHero() {
         </div>
 
         {/* MARQUEE SMOOTH (INFINITE) */}
-        <div className="w-full overflow-hidden py-4 relative">
-          <div className="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-black to-transparent z-10" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-black to-transparent z-10" />
-
-          <motion.div 
-            className="flex gap-5"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-          >
-            {[1, 2, 3, 4, 1, 2, 3, 4].map((i, idx) => (
-              <div key={idx} className="w-48 h-84 md:w-64 md:h-112 shrink-0 overflow-hidden rounded-2xl border border-neutral-900 shadow-2xl">
-                <video
-                  src={`/assets/img/hero/vd${i}.mp4`}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-85"
-                />
-              </div>
-            ))}
-          </motion.div>
+        {/* REVISI 3: Menggunakan mask-linear-gradient shorthand agar fade-out di HP tidak terlalu memakan tempat */}
+        <div className="w-full overflow-hidden py-4 relative mask-[linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
+          <div className="flex w-max">
+            <motion.div 
+              className="flex gap-5 pr-5"
+              animate={{ x: "-33.33%" }}
+              transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+            >
+              {marqueeItems.map((i, idx) => (
+                // REVISI 4: Ukuran video responsif (w-36 h-64 di HP, membesar ke w-48 md:w-64 di Laptop/PC)
+                <div key={idx} className="w-36 h-64 sm:w-48 sm:h-84 md:w-64 md:h-112 shrink-0 overflow-hidden rounded-2xl border border-neutral-900 shadow-2xl">
+                  <video
+                    src={`/assets/img/hero/vd${i}.mp4`}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover opacity-85"
+                  />
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
+
       </div>
     </section>
   );

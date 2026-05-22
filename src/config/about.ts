@@ -20,7 +20,7 @@ export interface AboutContentData {
 // Konfigurasi Data Halaman Tentang Kami NORTHRE Creative Studio
 export const aboutContent: AboutContentData = {
   subtitle: "Who We Are",
-  title: "NORTHRE ADALAH ENGINE DI BALIK KONTEN VIRAL DAN BRAND PREMIUM.",
+  title: "NORTHRE CREATIVE STUDIO ADALAH SOLUSI TERBAIK UNTUK KONTEN BERKELAS BRAND KAMU.",
   description: "Kami bukan sekadar agensi media sosial biasa. Kami adalah studio kreatif yang menggabungkan intuisi seni, strategi konten modern, dan eksekusi visual tingkat tinggi untuk mendominasi digital pasar.",
   
   manifesto: {

@@ -17,8 +17,10 @@ export interface ContactContentData {
 
 export const contactContent: ContactContentData = {
   subtitle: "Get In Touch",
-  title: "MARI BANGUN SESUATU YANG LUAR BIASA BERSAMA.",
-  description: "Punya ide kreatif, proyek media sosial, atau kebutuhan produksi aset visual yang ingin didiskusikan? Tim kami di NORTHRE siap membantu menerjemahkan visi brand Anda menjadi kenyataan.",
+  // Judul lama diganti total & diubah ke HURUF BESAR SEMUA
+  title: "MARI BANGUN IDENTITAS BRAND KAMU DENGAN KONTEN-KONTEN YANG BERKELAS BERSAMA NORTHRE CREATIVE STUDIO.",
+  // Deskripsi lama tetap ada, dan ditambahkan kata-kata baru di bawahnya
+  description: "Punya ide kreatif, proyek media sosial, atau kebutuhan produksi aset visual yang ingin didiskusikan? Tim kami di NORTHRE siap membantu menerjemahkan visi brand Anda menjadi kenyataan. Karena brand yang kuat dimulai dari visual yang menarik, strategi yang tepat, dan konten yang mampu membangun kepercayaan.",
   // Otomatis mengambil nomor WA dari site.ts, diubah formatnya ke 62 di fungsi page.tsx nanti
   whatsappNumber: siteConfig.contact.whatsapp, 
   infoItems: [
