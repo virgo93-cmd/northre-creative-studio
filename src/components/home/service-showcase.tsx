@@ -12,11 +12,23 @@ export default function ServiceShowcase() {
   const allItems = categories.flatMap((cat) => cat.items);
 
   return (
-    <section className="relative w-full bg-black py-24">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative w-full py-16 overflow-hidden">
+      {/* BACKGROUND IMAGE DENGAN OVERLAY */}
+      <div className="absolute inset-0 z-0">
+        <Image 
+          src="/assets/img/showcase-bg.jpg" 
+          alt="Service Showcase Background" 
+          fill
+          className="object-cover opacity-40"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/85" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* HEADER */}
-        <div className="mb-24 text-center">
+        <div className="mb-20 text-center">
           <span className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-xs">Eksplorasi Solusi</span>
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mt-4">
             Ekosistem <span className="text-neutral-600">Layanan Kami</span>
@@ -34,24 +46,24 @@ export default function ServiceShowcase() {
               viewport={{ once: true }}
               className="flex flex-col items-center text-center group"
             >
-              {/* ICON LEBIH BESAR */}
-              <div className="mb-4 relative w-24 h-24 transition-transform duration-500 group-hover:scale-105">
+              {/* ICON */}
+              <div className="mb-4 relative w-20 h-20 transition-transform duration-500 group-hover:scale-110">
                 <Image 
                   src={`/assets/img/icons/${index + 1}.png`} 
                   alt={item.title} 
                   fill 
-                  sizes="96px"
+                  sizes="80px"
                   className="object-contain"
                 />
               </div>
 
-              {/* JUDUL LEBIH RAPAT */}
-              <h3 className="text-white font-bold uppercase tracking-widest text-sm -mt-1 mb-3">
+              {/* JUDUL */}
+              <h3 className="text-white font-bold uppercase tracking-widest text-sm mb-3">
                 {item.title}
               </h3>
               
               {/* DESKRIPSI */}
-              <p className="text-neutral-500 text-[11px] leading-relaxed mb-4 max-w-50">
+              <p className="text-neutral-400 text-[11px] leading-relaxed mb-4 max-w-50">
                 {item.description}
               </p>
               
