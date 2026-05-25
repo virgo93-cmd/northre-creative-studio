@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-// Import komponen preloader modern yang barusan kita buat
 import Preloader from "@/components/ui/preloader";
 
 const geistSans = Geist({
@@ -19,6 +18,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "NORTHRE CREATIVE STUDIO",
   description: "Solusi kreatif digital untuk mengembangkan brand dan bisnis Anda.",
+  // INI CARA PALING BENAR MENURUT NEXT.JS UNTUK GOOGLE VERIFICATION:
+  verification: {
+    google: "5wXLkOEWVZOHuXD0qbWKlhTbtMSgBL0vjpQQ2AQxPiM",
+  },
 };
 
 export default function RootLayout({
@@ -28,22 +31,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <head>
-        <meta name="google-site-verification" content="5wXLkOEWVZOHuXD0qbWKlhTbtMSgBL0vjpQQ2AQxPiM" />
-      </head>
       <body className="antialiased bg-black text-white">
-        {/* Komponen Preloader dipasang di paling atas body */}
         <Preloader />
-
-        {/* Navbar otomatis muncul di bagian paling atas */}
         <Navbar />
-        
-        {/* Area konten utama halaman */}
         <main className="min-h-screen">
           {children}
         </main>
-
-        {/* Footer dipasang di sini agar muncul di paling bawah semua halaman */}
         <Footer />
       </body>
     </html>
