@@ -18,9 +18,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "NORTHRE CREATIVE STUDIO",
   description: "Solusi kreatif digital untuk mengembangkan brand dan bisnis Anda.",
-  // INI CARA PALING BENAR MENURUT NEXT.JS UNTUK GOOGLE VERIFICATION:
   verification: {
-    google: "5wXLkOEWVZOHuXD0qbWKlhTbtMSgBL0vjpQQ2AQxPiM",
+    google: "d2PdfcpF8ZzHy-qBHOHvILV8hjEoDCAxo13Q-2nYtec",
   },
 };
 
