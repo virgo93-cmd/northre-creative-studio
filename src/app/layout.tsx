@@ -28,6 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" data-scroll-behavior="smooth" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <meta name="google-site-verification" content="5wXLkOEWVZOHuXD0qbWKlhTbtMSgBL0vjpQQ2AQxPiM" />
+      </head>
       <body className="antialiased bg-black text-white">
         {/* Komponen Preloader dipasang di paling atas body */}
         <Preloader />
