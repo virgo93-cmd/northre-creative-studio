@@ -33,7 +33,7 @@ export default function MegaMenu({ isOpen, onClose }: { isOpen: boolean; onClose
         </div>
 
         {/* KOLOM KANAN: Grid Konten Layanan dengan Ikon Resmi secara Terstruktur */}
-        <div className="col-span-9 grid grid-cols-2 gap-x-12 gap-y-8 pl-4">
+        <div className="col-span-9 grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-8 pl-4">
           
           {megaMenuCategories.map((category, catIndex) => (
             <div key={catIndex} className="space-y-5">
@@ -48,8 +48,9 @@ export default function MegaMenu({ isOpen, onClose }: { isOpen: boolean; onClose
                     href={item.href}
                     className="flex items-start gap-4 group cursor-pointer"
                   >
-                    <div className="p-2 rounded-lg bg-neutral-900 text-neutral-400 group-hover:bg-white group-hover:text-black transition-all duration-300 shadow-sm border border-neutral-800/40">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    {/* REVISI: Kontener dibongkar, sisa murni ikon SVG putih jernih & berukuran lebih besar */}
+                    <div className="pt-0.5 text-white transition-colors duration-300">
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d={item.iconPath} />
                         {/* Menjaga keaslian tag lingkaran khusus untuk menu Product Photography */}
                         {item.title === "Product Photography" && (

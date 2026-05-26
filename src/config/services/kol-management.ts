@@ -104,14 +104,16 @@ export const kolManagementContent: KolManagementData = {
       description: "Penarikan data metrik wawasan dari akun KOL setelah konten tayang untuk dianalisis efektivitas keberhasilan kampanyenya."
     }
   ],
+  // REVISI: Mengganti total list video lama dengan 9 data video baru milik lo
   portfolio: [
-    { id: 1, videoPath: "/assets/img/kol-management/1.mp4", alt: "Northre KOL Management Portfolio Model 1" },
-    { id: 5, videoPath: "/assets/img/kol-management/5.mp4", alt: "Northre KOL Management Portfolio Model 5" },
-    { id: 2, videoPath: "/assets/img/kol-management/2.mp4", alt: "Northre KOL Management Portfolio Model 2" },
-    { id: 6, videoPath: "/assets/img/kol-management/6.mp4", alt: "Northre KOL Management Portfolio Model 6" },
-    { id: 3, videoPath: "/assets/img/kol-management/3.mp4", alt: "Northre KOL Management Portfolio Model 3" },
-    { id: 7, videoPath: "/assets/img/kol-management/7.mp4", alt: "Northre KOL Management Portfolio Model 7" },
-    { id: 4, videoPath: "/assets/img/kol-management/4.mp4", alt: "Northre KOL Management Portfolio Model 4" },
-    { id: 8, videoPath: "/assets/img/kol-management/8.mp4", alt: "Northre KOL Management Portfolio Model 8" }
+    { id: 1, videoPath: "/assets/img/kol-management/ARIF.mp4", alt: "Northre KOL Management Portfolio ARIF" },
+    { id: 2, videoPath: "/assets/img/kol-management/FEBBY.mp4", alt: "Northre KOL Management Portfolio FEBBY" },
+    { id: 3, videoPath: "/assets/img/kol-management/NEEYDIRA.mp4", alt: "Northre KOL Management Portfolio NEEYDIRA" },
+    { id: 4, videoPath: "/assets/img/kol-management/SANDI.mp4", alt: "Northre KOL Management Portfolio SANDI" },
+    { id: 5, videoPath: "/assets/img/kol-management/SATRIA.mp4", alt: "Northre KOL Management Portfolio SATRIA" },
+    { id: 6, videoPath: "/assets/img/kol-management/SELA.mp4", alt: "Northre KOL Management Portfolio SELA" },
+    { id: 7, videoPath: "/assets/img/kol-management/SILVI.mp4", alt: "Northre KOL Management Portfolio SILVI" },
+    { id: 8, videoPath: "/assets/img/kol-management/VICKY.mp4", alt: "Northre KOL Management Portfolio VICKY" },
+    { id: 9, videoPath: "/assets/img/kol-management/VIRGI.mp4", alt: "Northre KOL Management Portfolio VIRGI" }
   ]
 };
