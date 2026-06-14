@@ -2,14 +2,14 @@
 
 @theme {
   /* Daftarkan warna kustom resmi NORTHRE ke dalam sistem utilitas Tailwind v4 */
-  --color-brand-black: #000000;
+  --color-brand-black: #1C1C1C;
   --color-brand-card: #0a0a0a;
   --color-text-primary: #ffffff;
   --color-text-secondary: #a3a3a3;
   
-  /* Tambahan warna aksen orange muda tipis untuk kedalaman dimensi gradasi */
-  --color-brand-orange-glow: rgba(249, 115, 22, 0.04);
-  --color-brand-orange-glow-intense: rgba(249, 115, 22, 0.08);
+  /* REVISI AKSEN: Mengubah dari orange muda menjadi warna biru elektrik kustom (#0000FE) */
+  --color-brand-blue-glow: rgba(0, 0, 254, 0.04);
+  --color-brand-blue-glow-intense: rgba(0, 0, 254, 0.08);
 }
 
 /* Reset dasar menggunakan utilitas warna yang sudah terdaftar di sistem Tailwind v4 */
@@ -20,6 +20,8 @@
     color: var(--color-text-primary);
     min-height: 100vh;
     scroll-behavior: smooth;
+    /* REVISI FONT: Mengunci font utama global ke Helvetica */
+    font-family: Helvetica, Arial, sans-serif;
   }
 }
 
@@ -39,13 +41,14 @@
   z-index: 0;
 }
 
-/* UTILITY BARU: Pendaran gradasi orange muda tipis sinematik (Orange Ambient Blur) */
+/* UTILITY BARU: Pendaran gradasi biru elektrik tipis sinematik (Blue Ambient Blur) */
 .bg-ambient-orange {
   position: absolute;
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, var(--color-brand-orange-glow-intense) 0%, var(--color-brand-orange-glow) 40%, rgba(0, 0, 0, 0) 70%);
+  /* REVISI: Mengarahkan variabel ke pendaran warna biru elektrik kustom baru */
+  background: radial-gradient(circle, var(--color-brand-blue-glow-intense) 0%, var(--color-brand-blue-glow) 40%, rgba(0, 0, 0, 0) 70%);
   filter: blur(100px);
   pointer-events: none;
   z-index: 0;

@@ -41,11 +41,12 @@ export default function KontakPage() {
   };
 
   return (
-    <main className="w-full bg-black min-h-screen relative overflow-hidden pt-32 pb-20">
+    /* REVISI WARNA: Mengubah bg-black menjadi warna hitam kustom lo #1C1C1C */
+    <main className="w-full bg-[#1C1C1C] min-h-screen relative overflow-hidden pt-32 pb-20">
       
-      {/* SHAPE GRADIENT AURA BACKDROP (BELAKANG LAYER - z-0) */}
-      <div className="absolute top-[-10%] left-[-10%] w-120 h-120 rounded-full bg-linear-to-br from-violet-600/10 to-cyan-500/5 blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-130 h-130 rounded-full bg-linear-to-tl from-cyan-600/10 to-violet-500/5 blur-[130px] pointer-events-none z-0" />
+      {/* SHAPE GRADIENT AURA BACKDROP - REVISI: Menggunakan pancaran lembut warna biru elektrik kustom #0000FE */}
+      <div className="absolute top-[-10%] left-[-10%] w-120 h-120 rounded-full bg-linear-to-br from-[#0000FE]/10 to-transparent blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-130 h-130 rounded-full bg-linear-to-tl from-[#0000FE]/5 to-transparent blur-[130px] pointer-events-none z-0" />
 
       {/* REVISI UKURAN: Diubah dari max-w-360 menjadi max-w-7xl mx-auto agar responsif & seimbang di laptop/PC */}
       <ScrollReveal duration={1000} className="max-w-7xl w-full mx-auto px-6 md:px-12 relative z-10">
@@ -77,7 +78,8 @@ export default function KontakPage() {
                   {item.href ? (
                     <a 
                       href={item.href}
-                      className="text-sm font-semibold text-white hover:text-neutral-400 transition-colors block"
+                      /* REVISI: Mengubah efek hover tautan kontak agar nembus warna biru elektrik kustom lo #0000FE */
+                      className="text-sm font-semibold text-white hover:text-[#0000FE] transition-colors block"
                     >
                       {item.value}
                     </a>
@@ -95,7 +97,7 @@ export default function KontakPage() {
               <iframe
                 title="NORTHRE Creative Studio Official Location"
                 src="https://maps.google.com/maps?q=-7.3633468215341304,108.2328048790295&z=16&output=embed"
-                className="w-full h-full rounded-xl border border-neutral-900 shadow-2xl relative z-10 invert-[0.93] contrast-[1.2] saturate-[0.4]"
+                className="w-full h-full rounded-xl border border-neutral-800/80 shadow-2xl relative z-10 invert-[0.93] contrast-[1.2] saturate-[0.4]"
                 allowFullScreen={true}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -105,7 +107,8 @@ export default function KontakPage() {
 
           {/* KOLOM KANAN: FORMULIR UTUH */}
           <div className="lg:col-span-7 w-full">
-            <div className="w-full rounded-2xl border border-neutral-900 bg-neutral-950/40 backdrop-blur-md p-6 md:p-10 shadow-2xl relative overflow-hidden">
+            {/* REVISI CARD STYLE: Mengubah border agar senada di atas warna hitam kustom lo */}
+            <div className="w-full rounded-2xl border border-neutral-800/60 bg-neutral-950/40 backdrop-blur-md p-6 md:p-10 shadow-2xl relative overflow-hidden">
               
               <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-neutral-800 to-transparent" />
               
@@ -115,6 +118,7 @@ export default function KontakPage() {
                     <label className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest">
                       Nama Lengkap / Brand *
                     </label>
+                    {/* REVISI INPUT: Mengubah bg-black/60 ke bg-neutral-900/40 agar kontras, border-neutral-800, & focus warna kustom lo */}
                     <input
                       type="text"
                       name="nama"
@@ -122,7 +126,7 @@ export default function KontakPage() {
                       onChange={handleChange}
                       placeholder="Masukkan nama Anda"
                       required
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-900 bg-black/60 text-sm text-white placeholder-neutral-600 focus:outline-hidden focus:border-neutral-500 transition-colors font-medium"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/40 text-sm text-white placeholder-neutral-600 focus:outline-hidden focus:border-[#0000FE]/50 transition-colors font-medium"
                     />
                   </div>
 
@@ -136,7 +140,7 @@ export default function KontakPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="nama@email.com"
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-900 bg-black/60 text-sm text-white placeholder-neutral-600 focus:outline-hidden focus:border-neutral-500 transition-colors font-medium"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/40 text-sm text-white placeholder-neutral-600 focus:outline-hidden focus:border-[#0000FE]/50 transition-colors font-medium"
                     />
                   </div>
                 </div>
@@ -150,10 +154,10 @@ export default function KontakPage() {
                       name="layanan"
                       value={formData.layanan}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-neutral-900 bg-black/60 text-sm text-white focus:outline-hidden focus:border-neutral-500 transition-colors font-medium appearance-none cursor-pointer"
+                      className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/40 text-sm text-white focus:outline-hidden focus:border-[#0000FE]/50 transition-colors font-medium appearance-none cursor-pointer"
                     >
                       {contactContent.serviceOptions.map((option, idx) => (
-                        <option key={idx} value={option} className="bg-black text-white">
+                        <option key={idx} value={option} className="bg-[#1C1C1C] text-white">
                           {option}
                         </option>
                       ))}
@@ -177,13 +181,14 @@ export default function KontakPage() {
                     onChange={handleChange}
                     placeholder="Ceritakan singkat mengenai proyek kreatif yang ingin Anda bangun..."
                     required
-                    className="w-full px-4 py-3 rounded-xl border border-neutral-900 bg-black/60 text-sm text-white placeholder-neutral-600 focus:outline-hidden focus:border-neutral-500 transition-colors font-medium resize-none leading-relaxed"
+                    className="w-full px-4 py-3 rounded-xl border border-neutral-800 bg-neutral-900/40 text-sm text-white placeholder-neutral-600 focus:outline-hidden focus:border-[#0000FE]/50 transition-colors font-medium resize-none leading-relaxed"
                   />
                 </div>
 
+                {/* REVISI CTA BUTTON: Mengubah efek hover agar meledak mantul warna biru elektrik kustom lo #0000FE */}
                 <button
                   type="submit"
-                  className="w-full py-4 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-neutral-200 transition-all duration-300 shadow-xl border border-white cursor-pointer"
+                  className="w-full py-4 rounded-xl bg-white text-black text-xs font-bold uppercase tracking-wider hover:bg-[#0000FE] hover:text-white hover:border-[#0000FE] transition-all duration-300 shadow-xl border border-white cursor-pointer"
                 >
                   Kirim Pesan Ke WhatsApp
                 </button>
@@ -192,7 +197,7 @@ export default function KontakPage() {
             </div>
           </div>
 
-        </div>
+         </div>
       </ScrollReveal>
     </main>
   );

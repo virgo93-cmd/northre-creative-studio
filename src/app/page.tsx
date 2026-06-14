@@ -10,7 +10,8 @@ import ScrollReveal from "@/components/ui/scroll-reveal";
 
 export default function Home() {
   return (
-    <main className="w-full bg-black min-h-screen relative overflow-hidden">
+    // REVISI: Mengubah bg-black menjadi warna hitam kustom #1C1C1C agar selaras dengan tema global baru
+    <main className="w-full bg-[#1C1C1C] min-h-screen relative overflow-hidden">
       
       {/* SECTION 1: HERO SECTION */}
       <ScrollReveal duration={1000}>

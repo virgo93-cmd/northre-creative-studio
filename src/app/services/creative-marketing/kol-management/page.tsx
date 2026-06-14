@@ -1,12 +1,10 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import { kolManagementContent } from "@/config/services/kol-management";
 
-export const metadata = {
-  title: "KOL Management - NORTHRE CREATIVE STUDIO",
-  description: "Menghubungkan brand Anda dengan Key Opinion Leader dan influencer loyal berbasis data.",
-};
-
+// Objek pemetaan Ikon SVG khusus untuk mempercantik judul kustom tiap pilar layanan KOL Management
 const pillarIcons: Record<string, React.ReactNode> = {
   "pillar-1": (
     <svg className="w-5 h-5 text-neutral-500 group-hover:text-white transition-colors duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -30,6 +28,7 @@ const pillarIcons: Record<string, React.ReactNode> = {
   ),
 };
 
+// Judul pilar kustom komersial untuk memperkuat sektor influencer scouting
 const attractivePillarTitles: Record<string, string> = {
   "pillar-1": "Data-Driven KOL Scouting",
   "pillar-2": "Endorsement Strategy Blueprint",
@@ -41,10 +40,11 @@ export default function KolManagementPage() {
   const { hero, pillars, benefits, workflow, portfolio } = kolManagementContent;
 
   return (
-    <main className="w-full bg-black text-neutral-300 pt-40 pb-32 min-h-screen relative overflow-x-hidden">
+    /* REVISI WARNA: Mengubah bg-black menjadi warna hitam kustom lo #1C1C1C */
+    <main className="w-full bg-[#1C1C1C] text-neutral-300 pt-40 pb-32 min-h-screen relative overflow-x-hidden">
       
-      {/* BACKGROUND AURA GLOW DI LUAR HERO */}
-      <div className="absolute top-1/3 right-1/4 w-125 h-125 rounded-full bg-neutral-900/5 blur-[150px] pointer-events-none z-0" />
+      {/* BACKGROUND AURA GLOW DI LUAR HERO - REVISI: Mengubah pancaran menjadi warna biru elektrik kustom lo #0000FE */}
+      <div className="absolute top-1/3 right-1/4 w-125 h-125 rounded-full bg-[#0000FE]/10 blur-[150px] pointer-events-none z-0" />
 
       <style>{`
         @keyframes marquee {
@@ -61,11 +61,12 @@ export default function KolManagementPage() {
         }
       `}</style>
 
-      <div className="max-w-360 mx-auto px-6 md:px-16 space-y-32 relative z-10">
+      {/* REVISI UKURAN: Mengubah max-w-360 ke max-w-7xl agar responsif konsisten dengan layout lainnya */}
+      <div className="max-w-7xl mx-auto px-6 md:px-16 space-y-32 relative z-10">
         
         {/* HERO SECTION */}
-        {/* REVISI: Mengubah min-h-[480px] menjadi min-h-120 */}
-        <section className="relative w-full min-h-120 flex items-center rounded-3xl overflow-hidden border border-neutral-900/40 bg-black shadow-2xl p-8 md:p-16 group">
+        {/* REVISI WARNA: Mengubah bg-black ke warna hitam kustom lo #1C1C1C dengan border selaras */}
+        <section className="relative w-full min-h-120 flex items-center rounded-3xl overflow-hidden border border-neutral-800/40 bg-[#1C1C1C] shadow-2xl p-8 md:p-16 group">
           
           {/* BACKGROUND IMAGE FILL */}
           <div className="absolute inset-0 z-0 pointer-events-none">
@@ -74,18 +75,18 @@ export default function KolManagementPage() {
               alt="Northre KOL Management Hero Background Visual"
               fill
               priority
-              sizes="100vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover opacity-25 group-hover:opacity-35 transition-opacity duration-700 object-center"
             />
-            {/* Lapisan shading gelap melingkar & linear mendalam */}
-            <div className="absolute inset-0 bg-radial from-transparent via-black/40 to-black/90" />
-            {/* REVISI: Mengubah bg-gradient-to-r menjadi bg-linear-to-r */}
-            <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent" />
+            {/* Lapisan shading gelap melingkar & linear mendalam - REVISI: Menyelaraskan masking gradasi dengan hitam kustom #1C1C1C */}
+            <div className="absolute inset-0 bg-radial from-transparent via-[#1C1C1C]/40 to-[#1C1C1C]" />
+            <div className="absolute inset-0 bg-linear-to-r from-[#1C1C1C] via-[#1C1C1C]/40 to-transparent" />
           </div>
 
           {/* KONTEN TEKS HERO DI ATAS BACKGROUND LAYER */}
           <div className="max-w-2xl space-y-5 relative z-10 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-black/60 backdrop-blur-md">
+            {/* REVISI WARNA BADGE: Menyelaraskan background badge dengan warna hitam kustom */}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-800 bg-neutral-900/60 backdrop-blur-md">
               <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
               <p className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest leading-none">
                 {hero.subtitle}
@@ -104,7 +105,7 @@ export default function KolManagementPage() {
 
         {/* PILARS SECTION */}
         <section className="space-y-12">
-          <div className="flex flex-col gap-2 border-b border-neutral-900/80 pb-6">
+          <div className="flex flex-col gap-2 border-b border-neutral-800/80 pb-6">
             <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Kategori Solusi</p>
             <h2 className="text-lg md:text-xl font-bold text-white tracking-wide uppercase">
               Cakupan Layanan Kami
@@ -114,12 +115,16 @@ export default function KolManagementPage() {
             {pillars.map((pillar) => (
               <div 
                 key={pillar.id} 
-                className="p-8 rounded-2xl bg-brand-card border border-neutral-900/60 space-y-4 hover:border-neutral-800 transition-all duration-500 group relative overflow-hidden shadow-2xl"
+                /* REVISI STYLE & WARNA:
+                   - Mengubah bg-brand-card menjadi warna hitam kustom #1C1C1C
+                   - Mengubah hover border agar menyala warna biru elektrik kustom lo #0000FE
+                */
+                className="p-8 rounded-2xl bg-[#1C1C1C] border border-neutral-800/60 space-y-4 hover:border-[#0000FE]/50 transition-all duration-500 group relative overflow-hidden shadow-2xl"
               >
                 <div className="absolute top-0 left-0 w-full h-px bg-linear-to-r from-transparent via-neutral-800 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-xl bg-neutral-950 border border-neutral-900 group-hover:border-neutral-800 transition-all duration-500">
+                  <div className="p-2 rounded-xl bg-neutral-950 border border-neutral-800 group-hover:border-neutral-700 transition-all duration-500">
                     {pillarIcons[pillar.id] || null}
                   </div>
                   <h3 className="text-sm md:text-base font-bold text-white tracking-wide group-hover:text-neutral-300 transition-colors">
@@ -137,7 +142,7 @@ export default function KolManagementPage() {
 
         {/* PORTFOLIO SHOWCASE */}
         <section className="space-y-12 overflow-hidden w-full relative">
-          <div className="flex flex-col gap-2 border-b border-neutral-900/80 pb-6">
+          <div className="flex flex-col gap-2 border-b border-neutral-800/80 pb-6">
             <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Showcase</p>
             <h2 className="text-lg md:text-xl font-bold text-white tracking-wide uppercase">
               Roster Kreator / Portofolio
@@ -145,15 +150,17 @@ export default function KolManagementPage() {
           </div>
           
           <div className="relative w-full overflow-hidden py-2">
-            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-linear-to-r from-black via-black/40 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-linear-to-l from-black via-black/40 to-transparent z-10 pointer-events-none" />
+            {/* REVISI EDGE FADER VIGNETTE: Mengubah dari dari hitam bawaan menjadi warna hitam kustom lo #1C1C1C agar tidak patah */}
+            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-linear-to-r from-[#1C1C1C] via-[#1C1C1C]/40 to-transparent z-10 pointer-events-none" />
+            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-linear-to-l from-[#1C1C1C] via-[#1C1C1C]/40 to-transparent z-10 pointer-events-none" />
 
             <div className="animate-marquee gap-5">
               <div className="flex gap-5 shrink-0">
                 {portfolio.map((item) => (
                   <div 
                     key={`orig-${item.id}`} 
-                    className="relative w-48 h-84 md:w-64 md:h-112 overflow-hidden rounded-2xl bg-brand-card border border-neutral-900/80 group cursor-pointer shadow-2xl transition-all duration-500 hover:border-neutral-700"
+                    /* REVISI WARNA: Mengubah bg-brand-card ke warna hitam kustom lo #1C1C1C, hover:border ke warna kustom lo #0000FE */
+                    className="relative w-48 h-84 md:w-64 md:h-112 overflow-hidden rounded-2xl bg-[#1C1C1C] border border-neutral-800/80 group cursor-pointer shadow-2xl transition-all duration-500 hover:border-[#0000FE]/50"
                   >
                     <video
                       src={item.videoPath}
@@ -171,7 +178,8 @@ export default function KolManagementPage() {
                 {portfolio.map((item) => (
                   <div 
                     key={`dup-${item.id}`} 
-                    className="relative w-48 h-84 md:w-64 md:h-112 overflow-hidden rounded-2xl bg-brand-card border border-neutral-900/80 group cursor-pointer shadow-2xl transition-all duration-500 hover:border-neutral-700"
+                    /* REVISI WARNA: Mengubah bg-brand-card ke warna hitam kustom lo #1C1C1C, hover:border ke warna kustom lo #0000FE */
+                    className="relative w-48 h-84 md:w-64 md:h-112 overflow-hidden rounded-2xl bg-[#1C1C1C] border border-neutral-800/80 group cursor-pointer shadow-2xl transition-all duration-500 hover:border-[#0000FE]/50"
                   >
                     <video
                       src={item.videoPath}
@@ -190,7 +198,7 @@ export default function KolManagementPage() {
 
         {/* WORKFLOW SECTION */}
         <section className="space-y-12">
-          <div className="flex flex-col gap-2 border-b border-neutral-900/80 pb-6">
+          <div className="flex flex-col gap-2 border-b border-neutral-800/80 pb-6">
             <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Sistem Kerja</p>
             <h2 className="text-lg md:text-xl font-bold text-white tracking-wide uppercase">
               Alur Kerja Kolaborasi
@@ -199,7 +207,7 @@ export default function KolManagementPage() {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 relative">
             {workflow.map((item) => (
               <div key={item.step} className="space-y-4 relative group">
-                <div className="w-full h-px bg-neutral-950 border-t border-neutral-900 group-hover:border-neutral-800 transition-colors duration-500" />
+                <div className="w-full h-px bg-neutral-950 border-t border-neutral-800 group-hover:border-neutral-700 transition-colors duration-500" />
                 
                 <div className="text-2xl font-mono font-bold text-neutral-800 tracking-tight transition-colors duration-500 group-hover:text-neutral-600">
                   {String(item.step).padStart(2, '0')}
@@ -218,8 +226,9 @@ export default function KolManagementPage() {
         </section>
 
         {/* BENEFITS SECTION */}
-        <section className="p-8 md:p-14 rounded-3xl bg-brand-card border border-neutral-900/60 grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-14 shadow-2xl relative overflow-hidden">
-          <div className="absolute -right-16 -bottom-16 w-48 h-48 rounded-full bg-neutral-900/20 blur-3xl pointer-events-none" />
+        {/* REVISI WARNA: Mengubah bg-brand-card ke warna hitam kustom lo #1C1C1C dengan border selaras */}
+        <section className="p-8 md:p-14 rounded-3xl bg-[#1C1C1C] border border-neutral-800/60 grid grid-cols-1 lg:grid-cols-3 gap-10 md:gap-14 shadow-2xl relative overflow-hidden">
+          <div className="absolute -right-16 -bottom-16 w-48 h-48 rounded-full bg-neutral-900/10 blur-3xl pointer-events-none" />
           {benefits.map((benefit) => (
             <div key={benefit.id} className="space-y-3 relative z-10">
               <div className="w-6 h-px bg-neutral-700" />

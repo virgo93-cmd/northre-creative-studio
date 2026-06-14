@@ -9,19 +9,22 @@ function getValueIcon(iconType: string) {
   switch (iconType) {
     case "bold":
       return (
-        <svg className="w-5 h-5 text-violet-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        /* REVISI WARNA: Diselaraskan dari text-violet-400 ke warna biru elektrik kustom #0000FE */
+        <svg className="w-5 h-5 text-[#0000FE]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
       );
     case "chart":
       return (
-        <svg className="w-5 h-5 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        /* REVISI WARNA: Diselaraskan dari text-cyan-400 ke warna biru elektrik kustom #0000FE */
+        <svg className="w-5 h-5 text-[#0000FE]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       );
     case "execution":
       return (
-        <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        /* REVISI WARNA: Diselaraskan dari text-emerald-400 ke warna biru elektrik kustom #0000FE */
+        <svg className="w-5 h-5 text-[#0000FE]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
         </svg>
       );
@@ -36,11 +39,12 @@ function getValueIcon(iconType: string) {
 
 export default function TentangKamiPage() {
   return (
-    <main className="w-full bg-black min-h-screen relative overflow-hidden pt-32 pb-20">
+    /* REVISI WARNA: Mengubah bg-black menjadi warna hitam kustom lo #1C1C1C */
+    <main className="w-full bg-[#1C1C1C] min-h-screen relative overflow-hidden pt-32 pb-20">
       
-      {/* BACKGROUND DECORATIVE AURA - TAILWIND V4 KANONIKAL */}
-      <div className="absolute top-[-10%] right-[-10%] w-125 h-125 rounded-full bg-linear-to-bl from-violet-600/10 to-cyan-500/5 blur-[120px] pointer-events-none z-0" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-125 h-125 rounded-full bg-linear-to-tr from-cyan-600/10 to-violet-500/5 blur-[130px] pointer-events-none z-0" />
+      {/* BACKGROUND DECORATIVE AURA - REVISI: Menggunakan pancaran lembut warna biru elektrik kustom #0000FE */}
+      <div className="absolute top-[-10%] right-[-10%] w-125 h-125 rounded-full bg-linear-to-bl from-[#0000FE]/10 to-transparent blur-[120px] pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-125 h-125 rounded-full bg-linear-to-tr from-[#0000FE]/5 to-transparent blur-[130px] pointer-events-none z-0" />
 
       {/* REVISI UKURAN: Diubah dari max-w-360 menjadi max-w-7xl mx-auto agar responsif */}
       <ScrollReveal duration={1000} className="max-w-7xl w-full mx-auto px-6 md:px-16 relative z-10 space-y-20 lg:space-y-24">
@@ -87,11 +91,11 @@ export default function TentangKamiPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-102"
               />
               
-              {/* VIGNETTE GRADIENT SINTAKS TAILWIND V4 - Nge-blend Halus di Atas, Bawah, Kiri, Kanan */}
-              <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/75 pointer-events-none" />
-              <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-black via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-black via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(0,0,0,0.8)] pointer-events-none" />
+              {/* VIGNETTE GRADIENT SINTAKS TAILWIND V4 - REVISI: Menyelaraskan warna blending dengan hitam kustom lo #1C1C1C */}
+              <div className="absolute inset-0 bg-linear-to-b from-[#1C1C1C]/30 via-transparent to-[#1C1C1C]/75 pointer-events-none" />
+              <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-[#1C1C1C] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-[#1C1C1C] via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 shadow-[inset_0_0_50px_rgba(28,28,28,0.8)] pointer-events-none" />
             </div>
           </div>
 
@@ -104,7 +108,8 @@ export default function TentangKamiPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 w-full">
             {aboutContent.coreValues.map((value) => (
               <div key={value.id} className="space-y-4 text-left group">
-                <div className="inline-flex p-3 rounded-xl bg-neutral-950 border border-neutral-900 transition-colors group-hover:bg-white group-hover:text-black">
+                {/* REVISI HOVER: Mengubah efek background hover seksi dari putih murni ke warna biru elektrik kustom lo #0000FE */}
+                <div className="inline-flex p-3 rounded-xl bg-neutral-950 border border-neutral-900 transition-colors group-hover:bg-[#0000FE] group-hover:text-white">
                   {getValueIcon(value.iconType)}
                 </div>
                 <h3 className="text-lg font-bold text-white uppercase tracking-tight transition-colors group-hover:text-neutral-300">

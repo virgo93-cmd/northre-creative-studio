@@ -14,20 +14,24 @@ export default function FAQSection() {
         <img 
           src="/assets/img/faq.png" 
           alt="FAQ Background" 
-          className="w-full h-full object-cover opacity-40" 
+          className="w-full h-full object-cover opacity-20" 
         />
-        <div className="absolute inset-0 bg-black/70" />
+        {/* REVISI OVERLAY: Mengubah bg-black/70 menjadi warna hitam kustom lo agar blending gradasinya bersih */}
+        <div className="absolute inset-0 bg-[#1C1C1C]/90" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* HEADER */}
         <div className="mb-12 text-center">
-          <span className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-xs">
+          {/* REVISI: Mengubah warna teks aksen label dari cyan-400 ke biru elektrik kustom #0000FE */}
+          <span className="text-[#0000FE] font-bold uppercase tracking-[0.3em] text-xs">
             Frequently Asked Questions
           </span>
+          {/* REVISI STYLE: Memberikan gradasi warna teks dari putih ke abu-abu netral agar terkesan premium */}
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mt-4">
-            Informasi <span className="text-neutral-600">Terukur</span>
+            <span className="bg-gradient-to-b from-white to-neutral-300 bg-clip-text text-transparent">Informasi</span>{" "}
+            <span className="text-neutral-600">Terukur</span>
           </h2>
         </div>
 
@@ -36,16 +40,29 @@ export default function FAQSection() {
           {faqData.map((faq, index) => (
             <div 
               key={index}
-              className="group border border-neutral-700 rounded-2xl overflow-hidden bg-black/60 backdrop-blur-[2px] hover:border-cyan-500/50 transition-colors duration-300"
+              /* REVISI MODERN WEB3 CARD STYLE:
+                 - Menggunakan efek Glassmorphism transparan (bg-neutral-900/40 + backdrop-blur-md)
+                 - Transisi border nembus glow biru elektrik kustom #0000FE tebal saat di-hover
+                 - Shadow glow halus di sekeliling card
+              */
+              className="group border border-neutral-800/60 rounded-2xl overflow-hidden bg-neutral-900/40 backdrop-blur-md hover:border-[#0000FE]/60 hover:shadow-[0_0_25px_rgba(0,0,254,0.15)] transition-all duration-300"
             >
               <button
                 onClick={() => setActiveIndex(activeIndex === index ? null : index)}
-                className="w-full flex justify-between items-center p-6 text-left"
+                className="w-full flex justify-between items-center p-6 text-left focus:outline-hidden cursor-pointer"
               >
-                <span className="font-bold text-white text-sm uppercase tracking-wider leading-relaxed pr-4">
+                <span className="font-bold text-white text-sm uppercase tracking-wider leading-relaxed pr-4 group-hover:text-white/90 transition-colors">
                   {faq.question}
                 </span>
-                <span className={`shrink-0 w-6 h-6 flex items-center justify-center rounded-full border border-neutral-600 text-cyan-400 transition-transform ${activeIndex === index ? "rotate-45" : ""}`}>
+                {/* REVISI WEB3 TOGGLE BADGE:
+                   - Mengubah dari bulat biasa menjadi kotak asimetris melengkung (rounded-lg) khas Tech Web3
+                   - Mengisi background dengan warna biru elektrik penuh jika item aktif
+                */}
+                <span className={`shrink-0 w-7 w-7 h-7 flex items-center justify-center rounded-lg border text-sm font-bold transition-all duration-300 ${
+                  activeIndex === index 
+                    ? "bg-[#0000FE] border-[#0000FE] text-white rotate-45 shadow-[0_0_10px_rgba(0,0,254,0.5)]" 
+                    : "border-neutral-700 text-[#0000FE] bg-neutral-950/40 group-hover:border-[#0000FE]/40"
+                }`}>
                   +
                 </span>
               </button>
@@ -59,7 +76,8 @@ export default function FAQSection() {
                     className="overflow-hidden"
                   >
                     <div className="px-6 pb-6 pt-0">
-                      <p className="text-neutral-300 text-xs leading-relaxed border-t border-neutral-700 pt-4">
+                      {/* REVISI INTERNAL DIVIDER: Menggunakan warna border netral tipis yang lembut */}
+                      <p className="text-neutral-400 text-xs leading-relaxed border-t border-neutral-800/80 pt-4">
                         {faq.answer}
                       </p>
                     </div>

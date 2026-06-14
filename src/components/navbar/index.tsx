@@ -13,6 +13,10 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   // Tambahan state khusus untuk toggle buka/tutup list sub-menu Produk di mobile
   const [isMobileProdukOpen, setIsMobileProdukOpen] = useState(false);
+  
+  /* KUNCI VISIBILITAS UTAMA:
+     State khusus untuk memastikan Navbar tidak muncul ke layar sebelum siklus loading awal selesai */
+  const [isNavbarMounted, setIsNavbarMounted] = useState(false);
 
   // Mengambil data sub-menu produk dari konfigurasi secara aman
   const produkNav = navigationContent.find((nav) => nav.label === "Produk");
@@ -29,6 +33,9 @@ export default function Navbar() {
   }
 
   useEffect(() => {
+    /* Set mounted ke true setelah browser siap merender komponen client */
+    setIsNavbarMounted(true);
+
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -44,10 +51,15 @@ export default function Navbar() {
   return (
     <header 
       onMouseLeave={() => setIsProdukHovered(false)}
+      /* REVISI KUNCI SINKRONISASI: 
+         Jika isNavbarMounted belum true, kita paksa opacity-0 dan pointer-events-none 
+         agar tidak bocor mendahului preloader lo, bro! */
       className={`fixed top-0 left-0 right-0 z-50 w-full flex justify-center transition-all duration-300 ${
+        !isNavbarMounted ? "opacity-0 pointer-events-none" : "opacity-100"
+      } ${
         isScrolled || isProdukHovered || isMobileMenuOpen
-          ? "bg-black/90 backdrop-blur-md border-b border-neutral-900 h-20" 
-          : "bg-black/0 h-24 border-b border-transparent" 
+          ? "bg-[#1C1C1C]/90 backdrop-blur-md border-b border-neutral-800 h-20" 
+          : "bg-[#1C1C1C]/0 h-24 border-b border-transparent" 
       }`}
     >
       {/* Padding disesuaikan: px-4 di mobile biar gak terlalu makan space, px-16 di desktop */}
@@ -77,7 +89,8 @@ export default function Navbar() {
                 <div 
                   key={index}
                   onMouseEnter={() => setIsProdukHovered(true)}
-                  className="text-sm font-semibold text-neutral-400 hover:text-white cursor-pointer transition-colors h-full flex items-center gap-1.5"
+                  /* REVISI: Mengubah pendaran warna text hover dari putih biasa ke biru elektrik kustom */
+                  className="text-sm font-semibold text-neutral-400 hover:text-[#0000FE] cursor-pointer transition-colors h-full flex items-center gap-1.5"
                 >
                   {menu.label}
                   <svg 
@@ -93,7 +106,8 @@ export default function Navbar() {
               <Link
                 key={index}
                 href={menu.href}
-                className="text-sm font-semibold text-neutral-400 hover:text-white cursor-pointer transition-colors"
+                /* REVISI: Mengubah pendaran warna text hover dari putih biasa ke biru elektrik kustom */
+                className="text-sm font-semibold text-neutral-400 hover:text-[#0000FE] cursor-pointer transition-colors"
               >
                 {menu.label}
               </Link>
@@ -107,7 +121,8 @@ export default function Navbar() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center bg-white text-black font-bold uppercase tracking-wider rounded-xl hover:bg-neutral-200 transition-all duration-300 shadow-md text-xs md:text-sm px-4 md:px-5 py-2"
+            /* REVISI: Mengubah warna tombol CTA utama dari putih menjadi biru elektrik kustom (#0000FE) dengan text putih tebal */
+            className="inline-flex items-center justify-center bg-[#0000FE] text-white font-bold uppercase tracking-wider rounded-xl hover:bg-[#0000FE]/80 transition-all duration-300 shadow-md text-xs md:text-sm px-4 md:px-5 py-2"
           >
             Hubungi Kami
           </a>
@@ -130,7 +145,8 @@ export default function Navbar() {
 
         {/* ================= SIDEBAR DRAWER MENU (MOBILE) ================= */}
         <div
-          className={`fixed top-20 left-0 w-full h-[calc(100vh-80px)] bg-black/95 backdrop-blur-2xl border-t border-neutral-900 transition-all duration-300 ease-in-out md:hidden p-8 z-40 overflow-y-auto ${
+          /* REVISI: Mengubah background mobile drawer dari bg-black/95 menjadi warna hitam kustom #1C1C1C dengan opacity */
+          className={`fixed top-20 left-0 w-full h-[calc(100vh-80px)] bg-[#1C1C1C]/95 backdrop-blur-2xl border-t border-neutral-800 transition-all duration-300 ease-in-out md:hidden p-8 z-40 overflow-y-auto ${
             isMobileMenuOpen 
               ? "opacity-100 translate-x-0" 
               : "opacity-0 translate-x-full pointer-events-none"
@@ -145,7 +161,7 @@ export default function Navbar() {
                   // Jika menu memiliki mega menu ("Produk"), render sebagai dropdown accordion yang interaktif
                   if (menu.hasMegaMenu) {
                     return (
-                      <div key={index} className="w-full border-b border-neutral-900/40 pb-3">
+                      <div key={index} className="w-full border-b border-neutral-800/40 pb-3">
                         <button
                           type="button"
                           onClick={() => setIsMobileProdukOpen(!isMobileProdukOpen)}
@@ -168,7 +184,7 @@ export default function Navbar() {
                               : "max-h-0 opacity-0 pointer-events-none"
                           }`}
                         >
-                          <div className="pl-4 flex flex-col gap-5 border-l border-neutral-900 mt-2">
+                          <div className="pl-4 flex flex-col gap-5 border-l border-neutral-800 mt-2">
                             {megaMenuCategories.map((category, catIndex) => (
                               <div key={catIndex} className="space-y-2.5">
                                 <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-wider">
@@ -180,7 +196,8 @@ export default function Navbar() {
                                       key={itemIndex}
                                       href={item.href}
                                       onClick={() => setIsMobileMenuOpen(false)} // Menutup sidebar ketika link halaman tujuan diklik
-                                      className="text-sm font-medium text-neutral-400 hover:text-white transition-colors flex items-center gap-2"
+                                      /* REVISI: Hover text dialihkan ke aksen warna biru elektrik kustom */
+                                      className="text-sm font-medium text-neutral-400 hover:text-[#0000FE] transition-colors flex items-center gap-2"
                                     >
                                       <span className="text-neutral-700">→</span>
                                       {item.title}
@@ -201,7 +218,7 @@ export default function Navbar() {
                       key={index}
                       href={menu.href} 
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-xl font-medium text-white hover:text-neutral-400 transition-colors flex items-center justify-between border-b border-neutral-900/40 pb-3"
+                      className="text-xl font-medium text-white hover:text-[#0000FE] transition-colors flex items-center justify-between border-b border-neutral-800/40 pb-3"
                     >
                       {menu.label}
                       <svg className="w-4 h-4 text-neutral-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

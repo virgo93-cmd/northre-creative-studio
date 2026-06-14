@@ -19,7 +19,8 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-black border-t border-neutral-900 text-neutral-400 pt-14 pb-6">
+    /* REVISI: Mengubah warna background dari bg-black menjadi warna hitam kustom #1C1C1C dan melembutkan warna border-t */
+    <footer className="w-full bg-[#1C1C1C] border-t border-neutral-800/60 text-neutral-400 pt-14 relative overflow-hidden">
       
       {/* REVISI RESPONSIVENESS: Mengubah susunan grid dan padding horizontal secara adaptif */}
       <div className="max-w-7xl mx-auto px-6 md:px-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-12 mb-12">
@@ -34,12 +35,14 @@ export default function Footer() {
 
         {/* KOLOM 2: OUR SERVICES (1 Kolom di Mobile, Memakan 3 Kolom di PC/Laptop) */}
         <div className="lg:col-span-3 space-y-4">
-          <h4 className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Our Services</h4>
+          {/* REVISI: Menyelaraskan border bawah judul kategori agar lembut */}
+          <h4 className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-800 pb-2">Our Services</h4>
           <ul className="space-y-3 text-xs">
             {servicesList.map((service, index) => (
               <li key={index}>
-                <Link href={service.href} className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors font-medium group">
-                  <span className="group-hover:text-white text-neutral-500">{service.icon}</span>
+                {/* REVISI: Mengubah pendaran warna hover teks & ikon ke arah warna biru elektrik kustom (#0000FE) */}
+                <Link href={service.href} className="flex items-center gap-2 text-neutral-400 hover:text-[#0000FE] transition-colors font-medium group">
+                  <span className="group-hover:text-[#0000FE] text-neutral-500 transition-colors">{service.icon}</span>
                   {service.title}
                 </Link>
               </li>
@@ -49,29 +52,55 @@ export default function Footer() {
 
         {/* KOLOM 3: SOCIAL MEDIA (1 Kolom di Mobile, Memakan 2 Kolom di PC/Laptop) */}
         <div className="lg:col-span-2 space-y-4">
-          <h4 className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Social Media</h4>
+          {/* REVISI: Menyelaraskan border bawah judul kategori agar lembut */}
+          <h4 className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-800 pb-2">Social Media</h4>
           <ul className="space-y-3 text-xs font-medium">
-            <li><a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a></li>
-            <li><a href={siteConfig.links.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a></li>
-            <li><a href={siteConfig.links.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">YouTube</a></li>
+            {/* REVISI: Mengubah pendaran warna hover ke arah warna biru elektrik kustom (#0000FE) */}
+            <li><a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-[#0000FE] transition-colors">Instagram</a></li>
+            <li><a href={siteConfig.links.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-[#0000FE] transition-colors">Facebook</a></li>
+            <li><a href={siteConfig.links.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-[#0000FE] transition-colors">YouTube</a></li>
           </ul>
         </div>
 
         {/* KOLOM 4: CONTACT US (1 Kolom di Mobile, Memakan 3 Kolom di PC/Laptop) */}
         <div className="lg:col-span-3 space-y-4">
-          <h4 className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-900 pb-2">Contact Us</h4>
+          {/* REVISI: Menyelaraskan border bawah judul kategori agar lembut */}
+          <h4 className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest border-b border-neutral-800 pb-2">Contact Us</h4>
           <ul className="space-y-3 text-xs font-medium text-neutral-400">
-            <li><a href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">{siteConfig.contact.whatsapp}</a></li>
-            <li><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-white transition-colors">{siteConfig.contact.email}</a></li>
+            {/* REVISI: Mengubah dari teks nomor WhatsApp menjadi aset image ikon wa.png dengan transisi hover halus */}
+            <li>
+              <a 
+                href={`https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-block relative w-28 h-8 opacity-85 hover:opacity-100 hover:scale-102 transition-all duration-300"
+              >
+                <Image 
+                  src="/assets/img/icons/wa.png" 
+                  alt="Chat WhatsApp NORTHRE" 
+                  fill 
+                  sizes="112px"
+                  className="object-contain object-left" 
+                />
+              </a>
+            </li>
+            <li><a href={`mailto:${siteConfig.contact.email}`} className="hover:text-[#0000FE] transition-colors">{siteConfig.contact.email}</a></li>
             <li className="text-[11px] text-neutral-500 leading-relaxed">{siteConfig.contact.address}</li>
           </ul>
         </div>
       </div>
       
       {/* AREA BOTTOM COPYRIGHT: Flex wrap otomatis tumpuk vertikal di Mobile, sejajar horizontal di PC */}
-      <div className="max-w-7xl mx-auto px-6 md:px-16 border-t border-neutral-900/60 pt-6 flex flex-col sm:flex-row gap-4 justify-between text-[11px] font-medium text-neutral-600">
-        <p>© {currentYear} {siteConfig.name.toUpperCase()}.</p>
-        <div className="flex gap-6"><Link href="/privacy" className="hover:text-neutral-400">Privacy Policy</Link><Link href="/terms" className="hover:text-neutral-400">Terms of Service</Link></div>
+      {/* REVISI WARNA UTAMA: Murni mengubah background polos menjadi gradasi hitam kustom #1C1C1C ke arah pendaran biru elektrik #0000FE */}
+      <div className="w-full bg-gradient-to-b from-[#1C1C1C] to-[#0000FE]/20 border-t border-neutral-800/60 py-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-16 flex flex-col sm:flex-row gap-4 justify-between text-[11px] font-medium text-neutral-600">
+          <p>© {currentYear} {siteConfig.name.toUpperCase()}.</p>
+          {/* REVISI: Mengubah hover tautan legalitas bawah ke arah warna putih agar lebih tegas dibaca */}
+          <div className="flex gap-6">
+            <Link href="/privacy" className="hover:text-neutral-400">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-neutral-400">Terms of Service</Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

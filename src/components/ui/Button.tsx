@@ -18,11 +18,11 @@ export default function Button({
   
   // Varian gaya Premium Minimalis
   const variants = {
-    // Putih solid mewah, teks hitam, pas di-hover berubah jadi semi-transparan elegan ala Apple
-    primary: "bg-white text-black hover:bg-white/90 hover:shadow-[0_4px_20px_rgba(255,255,255,0.15)]",
+    // REVISI: Mengubah dari putih solid menjadi warna biru elektrik kustom (#0000FE) dengan pendaran shadow biru elektrik saat di-hover
+    primary: "bg-[#0000FE] text-white hover:bg-[#0000FE]/90 hover:shadow-[0_4px_20px_rgba(0,0,254,0.25)]",
     
-    // Glassmorphic: Latar transparan gelap, border putih tipis mewah
-    secondary: "bg-neutral-900/40 text-white border border-neutral-800 hover:bg-neutral-900 hover:border-neutral-700",
+    // REVISI: Menyelaraskan warna kontainer dan border agar menyatu sempurna di atas background baru #1C1C1C
+    secondary: "bg-neutral-900/60 text-white border border-neutral-800 hover:bg-neutral-900 hover:border-neutral-700",
     
     // Ghost: Polosan, teks abu-abu menyala putih saat di-hover
     ghost: "bg-transparent text-neutral-400 hover:text-white",

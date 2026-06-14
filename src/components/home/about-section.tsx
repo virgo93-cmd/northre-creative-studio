@@ -17,17 +17,19 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="relative w-full py-20 md:py-24 overflow-hidden bg-black">
+    /* REVISI LATAR BELAKANG: Mengubah bg-black menjadi hitam kustom #1C1C1C dengan gradasi halus ke biru elektrik #0000FE */
+    <section className="relative w-full py-20 md:py-24 overflow-hidden bg-gradient-to-b from-[#1C1C1C] via-[#1C1C1C] to-[#0000FE]/20">
       {/* LATAR BELAKANG GAMBAR */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/assets/img/bg-kenapa-kami.png"
           alt="About Background"
           fill
-          className="object-cover opacity-30"
+          className="object-cover opacity-20"
           priority
         />
-        <div className="absolute inset-0 bg-black/80" />
+        {/* REVISI: Mengubah bg-black/80 menjadi warna hitam kustom lo agar blending gradasinya bersih */}
+        <div className="absolute inset-0 bg-[#1C1C1C]/80" />
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -38,7 +40,8 @@ export default function AboutSection() {
           {/* KOLOM 1: VIDEO DENGAN BINGKAI ASIMETRIS */}
           <div className="relative w-full max-w-md lg:max-w-none mx-auto">
             <div className="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-white z-20" />
-            <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-cyan-400 z-20" />
+            {/* REVISI: Mengubah warna border aksen bawah dari cyan-400 ke warna biru elektrik kustom #0000FE */}
+            <div className="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-[#0000FE] z-20" />
             
             <motion.div 
               initial={{ opacity: 0, scale: 0.95 }}
@@ -60,7 +63,8 @@ export default function AboutSection() {
               <button
                 type="button"
                 onClick={toggleMute}
-                className="absolute bottom-4 right-4 z-30 p-3 rounded-full bg-black/60 backdrop-blur-md border border-neutral-800 text-white hover:bg-white hover:text-black hover:scale-105 transition-all duration-300 cursor-pointer"
+                /* REVISI: Mengubah efek hover button dari text-black ke warna biru elektrik kustom #0000FE */
+                className="absolute bottom-4 right-4 z-30 p-3 rounded-full bg-black/60 backdrop-blur-md border border-neutral-800 text-white hover:bg-white hover:text-[#0000FE] hover:scale-105 transition-all duration-300 cursor-pointer"
                 title={isMuted ? "Aktifkan Suara" : "Matikan Suara"}
               >
                 {isMuted ? (
@@ -80,7 +84,8 @@ export default function AboutSection() {
           {/* KOLOM 2: CONTENT BLOCK */}
           <div className="flex flex-col text-left">
             <div className="mb-6 lg:mb-8 space-y-2">
-              <span className="text-cyan-400 font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs block">
+              {/* REVISI: Mengubah warna teks label kecil dari cyan-400 ke biru elektrik kustom #0000FE */}
+              <span className="text-[#0000FE] font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs block">
                 Kenapa Harus Northre Creative Studio?
               </span>
               {/* REVISI: Menggunakan kelas utilitas custom wrap-break-word pilihan lo */}
@@ -88,14 +93,15 @@ export default function AboutSection() {
                 Kreativitas yang <br />
                 <span className="text-neutral-600 relative inline-block mt-1">
                   Terukur
-                  <div className="absolute -bottom-1 md:-bottom-2 left-0 w-2/3 h-1 bg-cyan-400" />
+                  {/* REVISI: Mengubah dekorasi garis bawah teks dari cyan-400 ke warna biru elektrik kustom #0000FE */}
+                  <div className="absolute -bottom-1 md:-bottom-2 left-0 w-2/3 h-1 bg-[#0000FE]" />
                 </span>
               </h2>
             </div>
 
             <div className="relative mb-8 lg:mb-10">
               <p className="text-neutral-400 text-base md:text-lg leading-relaxed italic border-l-2 border-neutral-800 pl-4 md:pl-6">
-                "Kami percaya bahwa visual yang kuat adalah kunci pertumbuhan brand di era digital. 
+                "Kami believe bahwa visual yang kuat adalah kunci pertumbuhan brand di era digital. 
                 Northre hadir bukan hanya sebagai vendor, tapi sebagai mitra strategis untuk 
                 memastikan setiap konten yang diproduksi mampu mengonversi audiens menjadi pelanggan setia."
               </p>
@@ -104,17 +110,19 @@ export default function AboutSection() {
             <div className="mb-10 lg:mb-12">
               <Link 
                 href="/tentang-kami" 
-                className="inline-flex items-center gap-4 px-8 py-3.5 md:px-10 md:py-4 bg-white text-black font-bold uppercase tracking-wider rounded-xl hover:bg-cyan-400 hover:scale-105 transition-all duration-300 text-xs md:text-sm"
+                /* REVISI: Mengubah warna tombol CTA utama pas di-hover agar memantulkan pendaran biru elektrik kustom #0000FE */
+                className="inline-flex items-center gap-4 px-8 py-3.5 md:px-10 md:py-4 bg-white text-black font-bold uppercase tracking-wider rounded-xl hover:bg-[#0000FE] hover:text-white hover:scale-105 transition-all duration-300 text-xs md:text-sm"
               >
                 Tentang Kami
               </Link>
             </div>
 
             {/* REVIEW CARD RESPONSIVE */}
-            <div className="bg-black/40 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-neutral-800 flex items-center gap-5 md:gap-6 max-w-sm w-full">
+            {/* REVISI: Menyelaraskan warna background card dari black/40 ke kontras hitam kustom #1C1C1C dengan border halus */}
+            <div className="bg-[#1C1C1C]/60 backdrop-blur-md p-5 md:p-6 rounded-2xl border border-neutral-800/80 flex items-center gap-5 md:gap-6 max-w-sm w-full">
               <div className="flex -space-x-3 shrink-0">
                 {[1, 2, 3].map((i) => (
-                  <div key={i} className="relative w-9 h-9 md:w-10 md:h-10 rounded-full border-2 border-black overflow-hidden bg-neutral-800">
+                  <div key={i} className="relative w-9 h-9 md:w-10 md:h-10 rounded-full border-2 border-[#1C1C1C] overflow-hidden bg-neutral-800">
                     <Image 
                       src={`/assets/img/profil/${i}.jpeg`} 
                       alt={`Reviewer ${i}`} 

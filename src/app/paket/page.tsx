@@ -10,7 +10,8 @@ export default function PaketPricingPage() {
   if (baseWhatsappNumber.startsWith("0")) baseWhatsappNumber = "62" + baseWhatsappNumber.slice(1);
 
   return (
-    <main className="w-full bg-black min-h-screen relative overflow-hidden pt-32 pb-20">
+    /* REVISI WARNA: Mengubah bg-black menjadi warna hitam kustom lo #1C1C1C */
+    <main className="w-full bg-[#1C1C1C] min-h-screen relative overflow-hidden pt-32 pb-20">
       <div className="absolute top-0 left-0 w-full h-full opacity-[0.03]" style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
       
       {/* Mengurangi max-w agar grid kartu lebih ramping di tengah */}
@@ -18,7 +19,8 @@ export default function PaketPricingPage() {
         
         {/* JUDUL TETAP MINIMALIS */}
         <div className="text-left space-y-2 max-w-2xl">
-          <h2 className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.2em]">
+          {/* REVISI WARNA TEXT: Mengubah text-cyan-400 menjadi warna biru elektrik kustom lo #0000FE */}
+          <h2 className="text-[10px] font-bold text-[#0000FE] uppercase tracking-[0.2em]">
             {pricingContent.subtitle}
           </h2>
           <h1 className="text-2xl md:text-3xl font-light text-white tracking-tight">
@@ -31,18 +33,21 @@ export default function PaketPricingPage() {
           {pricingContent.packages.map((pkg) => (
             <div
               key={pkg.id}
+              /* REVISI BORDER GRADIENT: Mengubah dari violet-cyan ke arah warna biru elektrik kustom lo #0000FE */
               className={`relative group rounded-3xl p-0.5 transition-all duration-500 ${
-                pkg.isPopular ? "bg-linear-to-b from-violet-500 via-cyan-500 to-transparent" : "bg-neutral-800"
+                pkg.isPopular ? "bg-linear-to-b from-[#0000FE] via-[#0000FE]/30 to-transparent" : "bg-neutral-800/60"
               }`}
             >
-              <div className="bg-black rounded-[22px] p-6 h-full flex flex-col relative overflow-hidden">
-                {/* Neon Glow Effect */}
-                {pkg.isPopular && <div className="absolute -top-24 -right-24 w-40 h-40 bg-violet-600/20 blur-[60px]" />}
+              {/* REVISI BG CARD: Mengubah dari bg-black ke warna hitam kustom lo #1C1C1C */}
+              <div className="bg-[#1C1C1C] rounded-[22px] p-6 h-full flex flex-col relative overflow-hidden border border-neutral-800/10">
+                {/* Neon Glow Effect - REVISI: Mengubah pancaran glow menjadi warna biru elektrik kustom lo #0000FE */}
+                {pkg.isPopular && <div className="absolute -top-24 -right-24 w-40 h-40 bg-[#0000FE]/20 blur-[60px]" />}
                 
                 <div className="space-y-5 relative z-10">
                   <div className="flex justify-between items-start">
                     <h3 className="text-xs font-bold text-white uppercase tracking-wider">{pkg.name}</h3>
-                    {pkg.isPopular && <span className="text-[9px] font-black uppercase tracking-widest text-violet-400 bg-violet-400/10 px-2 py-0.5 rounded-md">Pilihan Utama</span>}
+                    {/* REVISI BADGE: Mengubah tekstur warna text & bg badge populer ke arah biru elektrik kustom lo #0000FE */}
+                    {pkg.isPopular && <span className="text-[9px] font-black uppercase tracking-widest text-[#0000FE] bg-[#0000FE]/10 px-2 py-0.5 rounded-md">Pilihan Utama</span>}
                   </div>
 
                   <div>
@@ -54,7 +59,8 @@ export default function PaketPricingPage() {
                   <ul className="space-y-2.5">
                     {pkg.features.map((f, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-[10px] text-neutral-400">
-                        <div className="w-1 h-1 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(34,211,238,0.4)]" />
+                        {/* REVISI BULLET POINT FLUID: Mengubah bulatan indicator dari cyan ke warna biru elektrik kustom lo #0000FE */}
+                        <div className="w-1 h-1 rounded-full bg-[#0000FE] shadow-[0_0_6px_rgba(0,0,254,0.6)]" />
                         {f}
                       </li>
                     ))}
@@ -62,8 +68,9 @@ export default function PaketPricingPage() {
 
                   <a
                     href={`https://wa.me/${baseWhatsappNumber}?text=${encodeURIComponent(pkg.whatsappMessage)}`}
+                    /* REVISI ACTION CTA BUTTON: Mengubah hover state tombol sekunder agar interaktif nembus warna kustom lo */
                     className={`block w-full py-2.5 rounded-xl text-center font-bold text-[9px] uppercase tracking-widest transition-all ${
-                      pkg.isPopular ? "bg-white text-black hover:bg-neutral-200" : "bg-neutral-900 text-white hover:bg-neutral-800 border border-neutral-800"
+                      pkg.isPopular ? "bg-white text-black hover:bg-neutral-200" : "bg-neutral-900 text-white hover:text-[#0000FE] hover:border-[#0000FE]/40 border border-neutral-800"
                     }`}
                   >
                     Pilih Paket Ini

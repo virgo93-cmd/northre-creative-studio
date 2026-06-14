@@ -7,11 +7,13 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="w-full bg-black text-neutral-300 pt-32 pb-20 min-h-screen">
+    /* REVISI WARNA: Mengubah bg-black menjadi warna hitam kustom lo #1C1C1C */
+    <main className="w-full bg-[#1C1C1C] text-neutral-300 pt-32 pb-20 min-h-screen">
       <div className="max-w-240 mx-auto px-6 md:px-16 space-y-12">
         
         {/* HEADER HALAMAN */}
-        <div className="space-y-4 border-b border-neutral-900 pb-8">
+        {/* REVISI: Menyelaraskan border bawah header menggunakan warna netral border-neutral-800/60 agar menyatu */}
+        <div className="space-y-4 border-b border-neutral-800/60 pb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             Terms of Service
           </h1>
@@ -29,49 +31,37 @@ export default function TermsPage() {
               1. Penerimaan Ketentuan
             </h2>
             <p className="text-neutral-400">
-              Dengan mengakses website ini atau menggunakan layanan yang disediakan oleh <span className="text-white font-semibold">NORTHRE CREATIVE STUDIO</span>, Anda dinyatakan telah membaca, memahami, dan menyetujui untuk terikat dengan seluruh Ketentuan Layanan ini. Jika Anda tidak menyetujui salah satu poin di dalamnya, Anda disarankan untuk tidak melanjutkan penggunaan layanan kami.
+              Dengan mengakses website ini atau menggunakan layanan yang disediakan oleh NORTHRE CREATIVE STUDIO (selanjutnya disebut "NORTHRE"), Anda dianggap telah membaca, memahami, dan menyetujui untuk terikat oleh seluruh Ketentuan Layanan ini. Jika Anda tidak menyetujui sebagian atau seluruh ketentuan ini, Anda tidak diperkenankan untuk menggunakan layanan kami.
             </p>
           </section>
 
           {/* PASAL 2 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white tracking-wide">
-              2. Ruang Lingkup Layanan
+              2. Ruang Lingkup Layanan & Hak Kekayaan Intelektual
             </h2>
             <p className="text-neutral-400">
-              NORTHRE menyediakan solusi kreatif ujung-ke-ujung yang terbagi dalam dua kategori utama:
+              NORTHRE menyediakan layanan kreatif digital termasuk namun tidak terbatas pada pengelolaan media sosial, produksi video, fotografi produk, perencanaan konten, manajemen KOL, serta layanan desain grafis dan website. Seluruh hak cipta atas materi, konsep, dan produk final yang diserahkan kepada Klien akan menjadi hak milik Klien setelah pelunasan pembayaran dilakukan secara penuh, kecuali untuk elemen-elemen bawaan atau tools pihak ketiga yang hak ciptanya tetap melekat pada pemilik aslinya.
             </p>
-            <ul className="list-disc pl-5 space-y-1.5 text-neutral-400">
-              <li><strong className="text-neutral-300">Creative Marketing:</strong> Social Media Management, Product Photography, Video Production, Content Planner, dan KOL Management.</li>
-              <li><strong className="text-neutral-300">Design & Development:</strong> Logo Design, Brand Identity, dan Web Desain (UI/UX).</li>
-            </ul>
           </section>
 
           {/* PASAL 3 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white tracking-wide">
-              3. Hak Kekayaan Intelektual (HAKI)
+              3. Hak Menggunakan Portofolio
             </h2>
-            <ul className="list-decimal pl-5 space-y-2 text-neutral-400">
-              <li>
-                <strong className="text-neutral-300">Kepemilikan Proses:</strong> Seluruh draf awal, konsep desain, sketsa, dan file kerja (*source files*) yang belum disetujui atau belum dilunasi merupakan hak milik mutlak NORTHRE.
-              </li>
-              <li>
-                <strong className="text-neutral-300">Pengalihan Hak:</strong> Hak kepemilikan hasil akhir kreatif (*final deliverables*) baru akan dialihkan sepenuhnya kepada Klien setelah Klien melakukan pelunasan pembayaran sesuai kesepakatan kontrak.
-              </li>
-              <li>
-                <strong className="text-neutral-300">Hak Portfolio:</strong> NORTHRE berhak untuk menampilkan karya atau hasil akhir proyek yang telah selesai di website ini, media sosial, atau proposal kami murni sebagai keperluan portofolio agensi, kecuali ada perjanjian kerahasiaan (*NDA*) tertulis sebelumnya.
-              </li>
-            </ul>
+            <p className="text-neutral-400">
+              Klien memberikan hak non-eksklusif, bebas royalti, dan berlaku global kepada NORTHRE untuk menampilkan, mengunggah, atau mempublikasikan hasil karya yang telah diproduksi (baik berupa video, foto, desain, maupun studi kasus pengelolaan media sosial) ke dalam kanal promosi internal kami, termasuk namun tidak terbatas pada website resmi, akun instagram, dan dokumen portofolio perusahaan, sebagai bagian dari bentuk rekam jejak profesional kami.
+            </p>
           </section>
 
           {/* PASAL 4 */}
           <section className="space-y-3">
             <h2 className="text-lg font-bold text-white tracking-wide">
-              4. Ketentuan Pembayaran
+              4. Sistem Pembayaran & Pembatalan
             </h2>
             <p className="text-neutral-400">
-              Setiap pengerjaan proyek wajib diawali dengan pembayaran uang muka (*Down Payment / DP*) sebesar nilai yang disepakati di dalam invoice resmi. Pembayaran DP bersifat <span className="text-white">non-refundable</span> (tidak dapat dikembalikan) jika pembatalan sepihak dilakukan oleh Klien di tengah jalan. Penyerahan file master final hanya akan dilakukan setelah sisa pelunasan diselesaikan.
+              Kerja sama akan dianggap sah dan dimulai setelah adanya kesepakatan tertulis serta pembayaran uang muka (Down Payment / DP) sesuai dengan invoice yang diterbitkan. Seluruh pembayaran DP bersifat <span className="text-white">non-refundable</span> (tidak dapat dikembalikan) jika pembatalan sepihak dilakukan oleh Klien di tengah jalan. Penyerahan file master final hanya akan dilakukan setelah sisa pelunasan diselesaikan.
             </p>
           </section>
 

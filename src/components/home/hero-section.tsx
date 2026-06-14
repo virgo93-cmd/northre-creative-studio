@@ -3,9 +3,10 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { homeHeroContent } from "@/config/home/hero-section";
+import { siteConfig } from "@/config/site";
 
 export default function HomeHero() {
-  const { typewriterItems, ctaButtons } = homeHeroContent;
+  const { typewriterItems } = homeHeroContent;
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -18,10 +19,15 @@ export default function HomeHero() {
   // Trik duplikasi data yang aman untuk kalkulasi pergeseran Framer Motion -33.33%
   const marqueeItems = [...[1, 2, 3, 4], ...[1, 2, 3, 4], ...[1, 2, 3, 4]];
 
+  // Mengolah nomor WhatsApp dari siteConfig agar bersih dari karakter non-angka untuk direct link
+  const whatsappTarget = siteConfig.contact.whatsapp.replace(/\D/g, "");
+  const whatsappUrl = `https://wa.me/${whatsappTarget}?text=Halo%20NORTHRE%20Creative%20Studio,%20saya%20ingin%20mulai%20berkolaborasi!`;
+
   return (
-    <section className="relative w-full bg-black pt-32 pb-10 overflow-hidden">
-      {/* BACKGROUND DECORATIVE AURA - SEKARANG PAKAI SHORTHAND KANONIKAL w-100 & h-100 */}
-      <div className="absolute top-[-10%] right-[-5%] w-100 h-100 rounded-full bg-linear-to-tr from-violet-600/10 to-cyan-500/5 blur-[100px] pointer-events-none z-0" />
+    /* REVISI: Mengubah bg-black menjadi warna hitam kustom #1C1C1C */
+    <section className="relative w-full bg-[#1C1C1C] pt-32 pb-10 overflow-hidden">
+      {/* BACKGROUND DECORATIVE AURA - REVISI: Diarahkan menggunakan warna biru elektrik kustom #0000FE */}
+      <div className="absolute top-[-10%] right-[-5%] w-100 h-100 rounded-full bg-linear-to-tr from-[#0000FE]/10 to-[#0000FE]/5 blur-[100px] pointer-events-none z-0" />
 
       {/* REVISI 1: Mengunci batas maksimal ke max-w-7xl agar sinkron dengan halaman lainnya */}
       <div className="max-w-7xl w-full mx-auto px-6 flex flex-col items-center text-center relative z-10 gap-16">
@@ -38,9 +44,11 @@ export default function HomeHero() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.5 }}
                 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase tracking-tight leading-tight"
               >
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-cyan-400 via-white to-violet-500">
+                {/* REVISI STYLE: Mengubah gradasi warna teks ketik menjadi putih ke biru elektrik kustom */}
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-white via-white to-[#0000FE]">
                   {typewriterItems[index]}
                 </span>
                 <motion.span animate={{ opacity: [0, 1, 0] }} transition={{ repeat: Infinity, duration: 0.8 }} className="text-white ml-2">|</motion.span>
@@ -48,21 +56,20 @@ export default function HomeHero() {
             </AnimatePresence>
           </div>
 
-          {/* TOMBOL DIPERKEcil (PX-6 PY-3) */}
+          {/* REVISI REKAYASA TOMBOL TUNGGAL MINIMALIS:
+              - Menghapus .map bawaan array ctaButtons total agar tombol portofolio lenyap
+              - Tombol Mulai Kolaborasi murni dirubah href-nya langsung nembak aman ke direct link WhatsApp
+              - Mempertahankan ukuran px-6 py-3 text-[10px] dan warna latar biru elektrik kebanggaan lo #0000FE
+          */}
           <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
-            {ctaButtons.map((button, i) => (
-              <a 
-                key={i} 
-                href={button.href} 
-                className={`px-6 py-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 ${
-                  button.type === 'primary' 
-                    ? 'bg-white text-black hover:bg-neutral-200' 
-                    : 'bg-transparent text-white border border-neutral-700 hover:border-white'
-                }`}
-              >
-                {button.label}
-              </a>
-            ))}
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all duration-300 bg-[#0000FE] text-white hover:bg-[#0000FE]/90 shadow-2xl cursor-pointer"
+            >
+              Mulai Kolaborasi
+            </a>
           </div>
         </div>
 

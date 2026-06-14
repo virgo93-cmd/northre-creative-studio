@@ -44,38 +44,60 @@ export default function Preloader() {
   if (!mounted || isHidden) return null;
 
   return (
-    <div
-      className={`fixed inset-0 bg-black z-9999 flex flex-col items-center justify-center select-none transition-transform duration-800 ease-in-out ${
-        isLoaded ? "-translate-y-full" : "translate-y-0"
-      }`}
-    >
-      {/* Container utama dengan space-y-10 untuk menjaga jarak vertikal tetap renggang */}
-      <div className="w-full max-w-md px-8 text-center space-y-10">
-        
-        {/* TULISAN UTAMA: Hanya huruf depan yang kapital, sebaris, solid putih */}
-        <div>
-          <h1 className="text-xl md:text-2xl font-bold text-white tracking-widest block whitespace-nowrap leading-none">
-            Northre Creative Studio
-          </h1>
-        </div>
+    <>
+      {/* LOGIKA CSS INJECTOR: Mengunci Navbar, Konten, & Scrollbar agar TIDAK bocor sebelum preloader selesai */}
+      {!isLoaded && (
+        <style dangerouslySetInnerHTML={{__html: `
+          html, body { overflow: hidden !important; }
+          header, main, footer { opacity: 0 !important; pointer-events: none !important; }
+        `}} />
+      )}
 
-        {/* PROGRESS BAR & PERSENTASE */}
-        <div className="space-y-2">
-          <div className="w-full h-px bg-neutral-900 relative overflow-hidden">
-            <div
-              className="h-full bg-white transition-all duration-200 ease-out"
-              style={{ width: `${Math.min(progress, 100)}%` }}
-            />
-          </div>
+      <div
+        /* REVISI WEB3 STYLE (TETAP DIJAGA UTUH Sesuai Request Lo):
+           - Mengubah bg-black menjadi warna hitam kustom #1C1C1C.
+           - Mengubah efek transisi hilangnya dari -translate-y-full (geser atas kaku) menjadi 
+             efek modern Web3 Fade Scale (skala membesar tipis & opacity memudar halus).
+        */
+        className={`fixed inset-0 bg-[#1C1C1C] z-9999 flex flex-col items-center justify-center select-none transition-all duration-1000 ease-in-out ${
+          isLoaded ? "opacity-0 scale-105 pointer-events-none" : "opacity-100 scale-100"
+        }`}
+      >
+        {/* Container utama dengan space-y-8 untuk menjaga kerapian tata letak */}
+        <div className="w-full max-w-sm px-10 text-center space-y-8">
           
-          <div className="flex justify-end">
-            <span className="text-[10px] font-mono text-neutral-500 tracking-wider">
-              {Math.min(progress, 100)}%
-            </span>
+          {/* TULISAN UTAMA: Sentuhan Web3 dengan gradasi warna putih ke biru elektrik kustom #0000FE */}
+          <div className="space-y-1">
+            <h1 className="text-xl md:text-2xl font-bold tracking-[0.25em] block whitespace-nowrap uppercase leading-none bg-gradient-to-r from-white via-white to-[#0000FE] bg-clip-text text-transparent">
+              Northre
+            </h1>
+            <p className="text-[9px] font-bold tracking-[0.4em] uppercase text-neutral-500 pl-1">
+              Creative Studio
+            </p>
           </div>
-        </div>
 
+          {/* PROGRESS BAR & PERSENTASE MINIMALIS ULTRA-THIN */}
+          <div className="space-y-3">
+            {/* Garis progress super tipis khas Web3 Dashboard */}
+            <div className="w-full h-[1px] bg-neutral-900/60 relative overflow-hidden">
+              <div
+                /* REVISI: Mengubah warna bar pemuat menjadi warna biru elektrik kustom #0000FE */
+                className="h-full bg-[#0000FE] transition-all duration-300 ease-out shadow-[0_0_8px_#0000FE]"
+                style={{ width: `${Math.min(progress, 100)}%` }}
+              />
+            </div>
+            
+            {/* Teks indikator angka persentase digital monospaced */}
+            <div className="flex justify-between items-center text-[10px] font-mono tracking-wider text-neutral-400">
+              <span className="text-neutral-600 uppercase font-sans font-bold tracking-widest text-[8px]">System Ready</span>
+              <span className="font-semibold text-white">
+                {Math.min(progress, 100).toString().padStart(3, "0")}%
+              </span>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </>
   );
 }

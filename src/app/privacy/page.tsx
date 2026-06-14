@@ -7,11 +7,13 @@ export const metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="w-full bg-black text-neutral-300 pt-32 pb-20 min-h-screen">
+    /* REVISI WARNA: Mengubah bg-black menjadi warna hitam kustom lo #1C1C1C */
+    <main className="w-full bg-[#1C1C1C] text-neutral-300 pt-32 pb-20 min-h-screen">
       <div className="max-w-240 mx-auto px-6 md:px-16 space-y-12">
         
         {/* HEADER HALAMAN */}
-        <div className="space-y-4 border-b border-neutral-900 pb-8">
+        {/* REVISI: Menyelaraskan border bawah header menggunakan warna netral border-neutral-800/60 agar menyatu */}
+        <div className="space-y-4 border-b border-neutral-800/60 pb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
             Privacy Policy
           </h1>
